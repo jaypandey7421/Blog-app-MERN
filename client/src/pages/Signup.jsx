@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import OAuth from '../components/OAuth';
 import './styles/Signup.css'
 
 export default function Signup() {
@@ -117,11 +117,7 @@ export default function Signup() {
                     >
                     {loading ? "Loading": "Singup"}
                 </button>
-                <button className='form-btn'
-                    disabled={loading}>
-                    <i className="fa-brands fa-google">
-                        </i>Signup with Google
-                </button>
+                <OAuth loading={loading} />
             </form>
             <div className='form-p'>
                 <p>Already have an account. <Link to="/login">Login</Link> </p>

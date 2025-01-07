@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { signInStart, signInSuccess, signInFailure } from '../redux/user/userSlice';
 import './styles/signup.css';
+import OAuth from '../components/OAuth';
 
 
 export default function Signin() {
@@ -87,11 +88,7 @@ export default function Signin() {
                     >
                     {loading ? "Loading" : "Signin"}
                 </button>
-                <button 
-                  className='form-btn'
-                  disabled = {loading}>
-                      <i className="fa-brands fa-google"></i> Signin with Google
-                    </button>
+                <OAuth loading={loading}/>
             </form>
             <div className='form-p'>
                 <p>Don't have an Account? <Link to="/signup"> Signup</Link> </p>
