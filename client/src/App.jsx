@@ -9,6 +9,7 @@ import SignupForm from './pages/Signup'
 import Footer from './components/Footer'
 import SigninForm from './pages/Signin'
 import Dashboard from './pages/Dashboard'
+import PrivateRoute from './components/PrivateRoute'
 
 
 export default function App() {
@@ -21,7 +22,9 @@ export default function App() {
         <Route path='/contact' Component={Contact} />
         <Route path='/signup' Component={SignupForm} />
         <Route path='/signin' Component={SigninForm} />
-        <Route path='/dashboard' element={<Dashboard />} />
+        <Route Component={PrivateRoute}>
+          <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
       <Footer />
