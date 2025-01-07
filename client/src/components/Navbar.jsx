@@ -1,11 +1,13 @@
 import React, { useState } from 'react'
 import {Link, useLocation} from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import './navbar.css'
 
 export default function Navbar() {
   const [linkToggle, setLinkToggle] = useState(false);
   const [searchToggle, setSearchToggle] = useState(false);
   const location = useLocation();
+  const {currentUser} = useSelector((state)=> state.user);
   const currentPath = location.pathname;
 
 
@@ -37,7 +39,31 @@ export default function Navbar() {
               placeholder="Search..." 
             />
         </div>
-        <button className="sign-in-btn">Sign In</button>
+        {
+          currentUser? 
+              (<div className="dropdown">
+                <div className='drop-dwn-img'>
+                  <img src={currentUser.profilePicture} alt="user" />
+                </div>
+                <div className="dropdown-content">
+                  <ul>
+                    <li>{currentUser.username}</li>
+                      <li>{currentUser.email}</li>
+                    <li>
+                      <Link to={'/profile?tab=profile'}>Profile</Link>
+                    </li>
+                    <li>Sign out</li>
+                  </ul>
+                </div>
+              </div> ): (
+                <button className="sign-in-btn">
+                  <Link to={"/signin"}>
+                    Sign In
+                  </Link>
+                </button>
+              )
+        }
+        
         <button 
           className="toggle-btn" 
           aria-label="Toggle navigation" 
