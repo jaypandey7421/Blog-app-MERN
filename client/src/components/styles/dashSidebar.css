@@ -1,0 +1,25 @@
+.sidebar{
+    flex: 0 0 180px;
+    height: 100vh;
+    background-color: #3f83f882;
+    color: #e0e6eb;
+}
+.sidebar-item{
+    cursor: pointer;
+}
+.sidebar-item:hover{
+    background-color: rgba(63, 131, 248, 0.4);
+}
+.sidebar a{
+    color: inherit;
+}
+.sidebar p{
+    display: inline-block;
+}
+
+
+@media (max-width: 450px) {
+    .sidebar{
+        flex: 0 0 100px ;
+    }
+}

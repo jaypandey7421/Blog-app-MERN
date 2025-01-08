@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import {Link, useLocation} from 'react-router-dom'
 import { useSelector } from 'react-redux';
-import './navbar.css'
+import './styles/navbar.css'
 
 export default function Navbar() {
   const [linkToggle, setLinkToggle] = useState(false);
@@ -50,7 +50,7 @@ export default function Navbar() {
                     <li>{currentUser.username}</li>
                       <li>{currentUser.email}</li>
                     <li>
-                      <Link to={'/profile?tab=profile'}>Profile</Link>
+                      <Link to={'/dashboard?tab=profile'}>Profile</Link>
                     </li>
                     <li>Sign out</li>
                   </ul>
