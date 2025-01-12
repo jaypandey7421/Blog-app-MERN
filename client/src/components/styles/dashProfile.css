@@ -9,12 +9,21 @@
 }
 .img-box{
     width: 100px;
+    position: relative;
     height: 100px;
     border-radius: 50%;
     border: 3px solid ;
     overflow: hidden;
     margin: 0 auto 1.5rem auto;
     box-shadow: 0 4px 8px rgba(255, 249, 249, 0.2);
+}
+.img-box img{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.file-input{
+    display: none !important;
 }
 .profile-form{
     width: 350px;
@@ -29,6 +38,12 @@
     font-size: 1rem;
     margin-bottom: 12px;
     cursor: pointer;
+}
+.err-msg{
+    padding: 15px;
+    font-size: 16px;
+    color: #c03333;
+    text-align: center;
 }
 .profile-form button{
     display: block;
