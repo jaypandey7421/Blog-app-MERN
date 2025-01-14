@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import {Link, useLocation} from 'react-router-dom'
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { signoutSuccess } from '../redux/user/userSlice';
 import './styles/navbar.css'
 
 export default function Navbar() {
@@ -9,6 +10,23 @@ export default function Navbar() {
   const location = useLocation();
   const {currentUser} = useSelector((state)=> state.user);
   const currentPath = location.pathname;
+  const dispatch = useDispatch();
+
+  const handleSignout = async ()=>{
+      try{
+        const res = await fetch('/api/user/signout', {
+          method: 'POST',
+        });
+        const data = await res.json();
+        if(!res.ok){
+          console.log(data.message);
+        }else{
+          dispatch(signoutSuccess());
+        }
+      }catch (err){
+        console.log(err.message);
+      }
+    };
 
 
   return (
@@ -52,7 +70,7 @@ export default function Navbar() {
                     <li>
                       <Link to={'/dashboard?tab=profile'}>Profile</Link>
                     </li>
-                    <li>Sign out</li>
+                    <li onClick={handleSignout}>Sign out</li>
                   </ul>
                 </div>
               </div> ): (

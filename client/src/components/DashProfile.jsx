@@ -6,6 +6,7 @@ import {
         upadateStart, 
         updateFailure, 
         updateSuccess,
+        signoutSuccess,
 } from '../redux/user/userSlice';
 import './styles/dashProfile.css'
 
@@ -77,6 +78,22 @@ export default function DashProfile() {
     }
   }
 
+  const handleSignout = async ()=>{
+    try{
+      const res = await fetch('/api/user/signout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if(!res.ok){
+        console.log(data.message);
+      }else{
+        dispatch(signoutSuccess());
+      }
+    }catch (err){
+      console.log(err.message);
+    }
+  };
+
   
   return (
     <div className="dash-profile">
@@ -147,7 +164,7 @@ export default function DashProfile() {
       </form>
       <div className="d-op">
         <span onClick={()=>{setDeleteWarning(true)}}>Delete account</span>
-        <span >Sign out</span>
+        <span onClick={handleSignout}>Sign out</span>
       </div>
       {deleteWarning && <PopUpWarning deleteWarning={setDeleteWarning} />}
       
