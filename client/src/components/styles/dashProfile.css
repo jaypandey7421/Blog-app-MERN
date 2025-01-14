@@ -37,12 +37,18 @@
     height: 1.5rem;
     font-size: 1rem;
     margin-bottom: 12px;
-    cursor: pointer;
+   
 }
 .err-msg{
     padding: 15px;
     font-size: 16px;
     color: #c03333;
+    text-align: center;
+}
+.success-msg{
+    padding: 15px;
+    font-size: 16px;
+    color: #057e15;
     text-align: center;
 }
 .profile-form button{
