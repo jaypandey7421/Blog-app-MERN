@@ -10,6 +10,8 @@ import Footer from './components/Footer'
 import SigninForm from './pages/Signin'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
+import OnlyAdmicPost from './components/OnlyAdmicPost'
+import CreatePost from './pages/CreatePost'
 
 
 export default function App() {
@@ -24,6 +26,9 @@ export default function App() {
         <Route path='/signin' Component={SigninForm} />
         <Route Component={PrivateRoute}>
           <Route path='/dashboard' element={<Dashboard />} />
+        </Route>
+        <Route Component={OnlyAdmicPost}>
+          <Route path='/create-post' Component={CreatePost} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>

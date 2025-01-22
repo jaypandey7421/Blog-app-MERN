@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PopUpWarning from './PopUpWarning';
@@ -12,7 +13,7 @@ import './styles/dashProfile.css'
 
 
 export default function DashProfile() {
-  const {currentUser, error} = useSelector((state) => state.user);
+  const {currentUser, error, loading} = useSelector((state) => state.user);
   const [imgFileUrl, setImgFileUrl] = useState(null);
   const [imgFileUploadErr, setImgFileUploadErr] = useState(null);
   const [updateUserSuccess, setUpdateUserSuccess] = useState(null);
@@ -158,9 +159,18 @@ export default function DashProfile() {
             onChange={handleChange} 
             />
         </div>
-        <button  type='submit'>
-          Update
+        <button  
+          type='submit'
+          disabled={loading}>
+          {loading? "Loading..": "Update"}
         </button>
+        {currentUser.isAdmin && (
+          <button>
+            <Link to={'/create-post'}>
+              Create a post
+            </Link>
+          </button>
+        )}
       </form>
       <div className="d-op">
         <span onClick={()=>{setDeleteWarning(true)}}>Delete account</span>
