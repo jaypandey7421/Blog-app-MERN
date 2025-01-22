@@ -6,15 +6,32 @@
 }
 .sidebar-item{
     cursor: pointer;
+    height: 2em;
+    padding: 0.5em;
+}
+.sidebar-active{
+    cursor: pointer;
+    height: 2em;
+    padding: 0.5em;
+    background-color:rgba(63, 131, 248, 0.4) ;
 }
 .sidebar-item:hover{
-    background-color: rgba(63, 131, 248, 0.4);
+    background-color: rgba(63, 131, 248, 0.2);
 }
 .sidebar a{
     color: inherit;
+    margin-left: 10px;
 }
 .sidebar p{
     display: inline-block;
+    margin-left: 10px;
+}
+.is-admin{
+    font-size: 12px;
+    border: 1px solid #e0e6eb;
+    color: inherit;
+    border-radius: 2px;
+    margin-left: 2.5em;
 }
 
 
