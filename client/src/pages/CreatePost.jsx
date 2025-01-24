@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import {useNavigate} from 'react-router-dom'
 import ReactQuill from 'react-quill';
 import { Client, Storage, ID } from "appwrite";
 import 'react-quill/dist/quill.snow.css';
@@ -10,6 +11,8 @@ export default function CreatePost() {
   const [formData, setFormData] = useState({});
   const [imgUploading, setImgUploading] = useState(false);
   const [errMsg, setErroMsg] = useState(null);
+  const [publishErr, setPublishErr] = useState(null);
+  const navigate = useNavigate();
 
   const handleFileChange =(e)=>{
     const file = e.target.files[0];
@@ -21,7 +24,7 @@ export default function CreatePost() {
     }else{
       setErroMsg('Only png, jpg and jpeg files are supported');
     }
-  }
+  };
 
   const handleUploadImage = ()=>{
     if(!fileInput){
@@ -54,26 +57,59 @@ export default function CreatePost() {
     }, (error)=>{
       console.log(error);
     });
-  }
+  };
+
+  const handleSubmit = async (e)=>{
+    e.preventDefault();
+
+    try{
+      const res = await fetch('/api/post/create', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if(!res.ok){
+        setPublishErr(data.message);
+        return;
+      }
+
+      if(res.ok){
+        setPublishErr(null);
+        navigate(`/post/${data.slug}`);
+      }
+    }catch (err){
+      console.log(err);
+      setPublishErr('Something went wrong.');
+    }
+  };
 
 
 
   return (
     <div className='create-post'>
       <h1>Write your article</h1>
-      <form >
+      <form onSubmit={handleSubmit}>
         <div>
           <input 
             type="text"
             placeholder='Title'
             required
-            id='title' 
+            id='title'
+            onChange={(e)=> setFormData({...formData, title: e.target.value})} 
           />
-          <select name="category" id="category">
-            <option value="uncategories">Select a category</option>
-            <option value="javascript">JavaScript</option>
-            <option value="Reactjs">React.js</option>
-            <option value="Nextjs">Next.js</option>
+          <select 
+            name="category" 
+            id="category"
+            onChange={(e)=> setFormData({...formData, category: e.target.value})}>
+                <option value="uncategories">Select a category</option>
+                <option value="javascript">JavaScript</option>
+                <option value="Reactjs">React.js</option>
+                <option value="Nextjs">Next.js</option>
           </select>
         </div>
         <div>
@@ -95,11 +131,17 @@ export default function CreatePost() {
         <ReactQuill
           theme='snow'
           placeholder='write something...'
+          onChange={(value)=> setFormData({...formData, content: value})}
           required
         />
         <button>
           Publish
         </button>
+        {publishErr && (
+          <div className="err-msg">
+            {publishErr}
+          </div>
+        )}
       </form>
     </div>
   )
