@@ -9,3 +9,16 @@
     font-size: 1.05rem;
     min-height: 300px;
 }
+.img-preview{
+    width: 200px;
+    border: 2px solid #adbacc;
+    border-radius: 5px;
+}
+.img-preview img{
+    width: 100%;
+}
+.err-msg{
+    color: rgb(199, 21, 21);
+    line-height: 20px;
+    font-size: 14px;
+}
