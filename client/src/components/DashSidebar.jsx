@@ -42,6 +42,14 @@ export default function DashSidebar() {
           <Link to='/dashboard?tab=profile'>Profile</Link>
           <span className='is-admin'>{isAdmin? "Admin": "User"}</span>
         </div>
+        {
+          isAdmin && (
+            <div className={tab==="posts"?"sidebar-active":"sidebar-item"}>
+              <i className="fa-solid fa-file-lines"></i>
+              <Link to='/dashboard?tab=posts'>Posts</Link>
+            </div>
+          )
+        }
         <div className="sidebar-item">
           <i className="fa-solid fa-arrow-right "></i>
           <p onClick={handleSignout}>Sign out</p>
