@@ -35,3 +35,11 @@ table {
     text-align: center;
     width: 50px; /* Adjust width as needed */
   }
+  
+  .show-more{
+    cursor: pointer;
+    line-height: 1rem;
+    text-align: center;
+    opacity: 0.8;
+    margin-top: 1em;
+  }
