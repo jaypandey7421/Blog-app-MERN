@@ -1,3 +1,37 @@
 .dash-posts{
     color: #dcdfe2;
 }
+table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  td {
+    padding: 10px;
+  }
+  td a{
+    text-decoration: none;
+    color: #dcdfe2;
+  }
+  td a:hover{
+    text-decoration: underline;
+    opacity: 0.6;
+  }
+  /* Optional: Style the "Post image" column */
+  td:nth-child(2) { 
+    width: 120px;
+  }
+  td img{
+    width: 60px;
+  }
+  
+  /* Optional: Style the "Delete" and "Edit" columns */
+  td:nth-child(5), td:nth-child(6) {
+    text-align: center;
+    width: 50px; /* Adjust width as needed */
+  }
