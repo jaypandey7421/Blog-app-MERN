@@ -96,7 +96,7 @@ export default function DashPost() {
                       <img src={post.image} alt={post.title} />
                     </td>
                     <td>
-                      <Link to={`post/${post.slug}`}>
+                      <Link to={`/post/${post.slug}`}>
                         {post.title.length> 12 ? post.title.substring(0,12): post.title}...
                       </Link>
                     </td>
@@ -107,7 +107,7 @@ export default function DashPost() {
                           setPostIdToDelete(post._id);
                         }}>Delete</td>
                     <td>
-                      <Link to={`update-post/${post._id}`}>
+                      <Link to={`/update-post/${post._id}`}>
                         Edit
                       </Link>
                     </td>

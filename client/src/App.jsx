@@ -11,6 +11,7 @@ import SigninForm from './pages/Signin'
 import Dashboard from './pages/Dashboard'
 import PrivateRoute from './components/PrivateRoute'
 import OnlyAdmicPost from './components/OnlyAdmicPost'
+import UpdatePost from './pages/UpdatePost'
 import CreatePost from './pages/CreatePost'
 
 
@@ -29,6 +30,7 @@ export default function App() {
         </Route>
         <Route Component={OnlyAdmicPost}>
           <Route path='/create-post' Component={CreatePost} />
+          <Route path='/update-post/:postId' Component={UpdatePost} />
         </Route>
         <Route path='*' element={<PageNotFound />} />
       </Routes>
