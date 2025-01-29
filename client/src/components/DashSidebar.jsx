@@ -44,6 +44,14 @@ export default function DashSidebar() {
         </div>
         {
           isAdmin && (
+            <div className={tab==="users"?"sidebar-active":"sidebar-item"}>
+              <i className="fa-solid fa-user-group"></i>
+              <Link to='/dashboard?tab=users'>Users</Link>
+            </div>
+          )
+        }
+        {
+          isAdmin && (
             <div className={tab==="posts"?"sidebar-active":"sidebar-item"}>
               <i className="fa-solid fa-file-lines"></i>
               <Link to='/dashboard?tab=posts'>Posts</Link>

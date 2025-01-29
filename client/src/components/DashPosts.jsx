@@ -89,8 +89,8 @@ export default function DashPost() {
           </thead>
           <tbody>
               {
-                userPosts.map((post, i)=>(
-                  <tr key={i}>
+                userPosts.map((post)=>(
+                  <tr key={post._id}>
                     <td>{new Date(post.updatedAt).toLocaleDateString()}</td>
                     <td>
                       <img src={post.image} alt={post.title} />

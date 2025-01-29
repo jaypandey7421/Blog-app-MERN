@@ -53,7 +53,7 @@ export const updateUser = async (req, res, next)=>{
 }
 
 export const deleteUser = async (req, res, next) =>{
-    if(req.user.id !== req.params.userId){
+    if(!req.user.isAdmin && req.user.id !== req.params.userId){
         return next(errorHandler(403, "Oops! This operation can't be performed."));
     }
     try{
@@ -109,7 +109,7 @@ export const getUsers = async (req, res, next)=>{
             createdAt: {$gte: oneMonthAgo},
         });
 
-        res.statsu(200).json({
+        res.status(200).json({
             users: usersWithoutPassword,
             totalUsers,
             lastMonthUsers,
