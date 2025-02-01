@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute'
 import OnlyAdmicPost from './components/OnlyAdmicPost'
 import UpdatePost from './pages/UpdatePost'
 import CreatePost from './pages/CreatePost'
+import PostPage from './pages/PostPage'
 
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
         <Route path='/contact' Component={Contact} />
         <Route path='/signup' Component={SignupForm} />
         <Route path='/signin' Component={SigninForm} />
+        <Route path='/post/:postSlug' element={<PostPage/>} />
         <Route Component={PrivateRoute}>
           <Route path='/dashboard' element={<Dashboard />} />
         </Route>
