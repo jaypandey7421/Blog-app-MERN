@@ -47,3 +47,8 @@
     color: rgb(38, 41, 85);
     text-decoration: underline;
 }
+.cta-box{
+    width: 100%;
+    border: 2px solid rgba(206, 160, 97, 0.698);
+    border-radius: 0 15px;
+}

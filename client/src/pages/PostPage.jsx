@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import {Link, useParams} from 'react-router-dom';
+import CallToAction from '../components/CallToAction';
 import './styles/postPage.css'
 
 export default function PostPag() {
@@ -66,6 +67,9 @@ export default function PostPag() {
                     </>
                 )
             }
+            <div className="cta-box">
+                <CallToAction />
+            </div>
         </div>
     )
 }
